@@ -1,8 +1,4 @@
 class Question {
-  // YOUR CODE HERE:
-  //
-  // 1. constructor (text, choices, answer, difficulty)
-
   constructor(text, choices, answer, difficulty) {
     this.text = text;
     this.choices = choices;
@@ -10,7 +6,6 @@ class Question {
     this.difficulty = difficulty;
   }
 
-  // 2. shuffleChoices()
   shuffleChoices() {
     this.choices.sort(() => Math.floor(Math.random() * this.choices.length));
   }
