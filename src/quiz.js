@@ -1,10 +1,10 @@
 class Quiz {
-  correctAnswers = 0;
-  currentQuestionIndex = 0;
   constructor(questions, timeLimit, timeRemaining) {
     this.questions = questions;
     this.timeLimit = timeLimit;
     this.timeRemaining = timeRemaining;
+    this.correctAnswers = 0;
+    this.currentQuestionIndex = 0;
   }
 
   getQuestion() {
@@ -16,9 +16,16 @@ class Quiz {
   }
 
   shuffleQuestions() {
-    this.questions.sort(() =>
-      Math.floor(Math.random() * this.questions.length)
-    );
+    let currentIndex = this.questions.length;
+    while (currentIndex !== 0) {
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      let temp = this.questions[currentIndex];
+      this.questions[currentIndex] = this.questions[randomIndex];
+      this.questions[randomIndex] = temp;
+    }
+    return this.questions;
   }
 
   checkAnswer(answer) {

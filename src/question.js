@@ -7,6 +7,15 @@ class Question {
   }
 
   shuffleChoices() {
-    this.choices.sort(() => Math.floor(Math.random() * this.choices.length));
+    let currentIndex = this.choices.length;
+    while (currentIndex !== 0) {
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      let temp = this.choices[currentIndex];
+      this.choices[currentIndex] = this.choices[randomIndex];
+      this.choices[randomIndex] = temp;
+    }
+    return this.choices;
   }
 }
