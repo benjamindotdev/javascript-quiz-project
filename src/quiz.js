@@ -51,6 +51,21 @@ class Quiz {
         .toFixed(1) / this.questions.length
     );
   }
+
+  startTimer() {
+    const timer = setInterval(() => {
+      if (this.timeRemaining === 0) {
+        this.stopTimer();
+        this.hasEnded();
+      } else {
+        this.timeRemaining--;
+      }
+    }, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(timer);
+  }
 }
 
 const questions = [
