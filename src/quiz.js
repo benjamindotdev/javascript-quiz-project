@@ -5,6 +5,7 @@ class Quiz {
     this.timeRemaining = timeRemaining;
     this.correctAnswers = 0;
     this.currentQuestionIndex = 0;
+    this.timer = null;
   }
 
   getQuestion() {
@@ -53,18 +54,20 @@ class Quiz {
   }
 
   startTimer() {
-    const timer = setInterval(() => {
+    this.timer = setInterval(() => {
       if (this.timeRemaining === 0) {
         this.stopTimer();
         this.hasEnded();
       } else {
         this.timeRemaining--;
+        console.log("Time remaining:", this.timeRemaining);
+        document.getElementById("timeRemaining").innerText = this.timeRemaining;
       }
     }, 1000);
   }
 
   stopTimer() {
-    clearInterval(timer);
+    clearInterval(this.timer);
   }
 }
 
